@@ -1,0 +1,21 @@
+.mobile-navbar {
+  height: 100%;
+  .split {
+    position: relative;
+    z-index: 99;
+    background-color: var(--shark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    .logo {
+      img {
+        width: 7rem;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

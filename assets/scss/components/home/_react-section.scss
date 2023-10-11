@@ -1,0 +1,20 @@
+.react {
+  .react-logo {
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+  .rocket {
+    animation: rocketShip 0.5s infinite;
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+  @keyframes rocketShip {
+    0% {
+      transform: rotate(1deg);
+    }
+    66% {
+      transform: rotate(-1deg);
+    }
+    100% {
+      transform: rotate(1deg);
+    }
+  }
+}

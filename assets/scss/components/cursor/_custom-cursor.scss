@@ -1,0 +1,17 @@
+.custom-cursor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: var(--tango);
+  border-radius: 100%;
+  z-index: 999;
+  pointer-events: none;
+  z-index: 9999;
+}
+@media (max-width: 1024px) {
+  .custom-cursor {
+    display: none;
+  }
+}

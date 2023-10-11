@@ -1,0 +1,32 @@
+.vue {
+	.vue-logo {
+		filter: drop-shadow(3px 3px 8px #222);
+	}
+	.space-ship {
+		bottom: 10vh;
+		transform: rotate(270deg);
+		animation: ship 1s ease infinite;
+		filter: drop-shadow(-15px -5px 5px #222);
+	}
+	@keyframes ship {
+		0% {
+			transform: scale(1) rotate(265deg);
+		}
+		50% {
+			transform: scale(0.96) rotate(265deg);
+		}
+		100% {
+			transform: scale(1) rotate(265deg);
+		}
+	}
+}
+.drop-shadow-effect {
+  filter: drop-shadow(0 0 10px rgba(34, 34, 34, 0.7));
+}
+@media (min-width: 768px) {
+	.vue {
+		.space-ship {
+			bottom: 15vh;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.desktop-link {
+  font-size: 14px;
+  padding: 1rem 0;
+  color: var(--grayChateau);
+  transition: color 0.25s ease-in-out;
+  &:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px var(--tango);
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
+    transform-origin: 0% 50%;
+  }
+  &:hover {
+    color: var(--tango);
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+}

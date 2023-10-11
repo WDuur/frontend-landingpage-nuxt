@@ -1,0 +1,97 @@
+.main-container {
+  padding-top: 102px;
+  overflow: hidden;
+  background-color: #61dbfb;
+
+  
+  .section {
+    height: 100vh;
+    position: relative;
+    .content {
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -70%);
+      z-index: 99;
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        height: 5rem;
+        margin-bottom: 20px;
+        color: var(--white);
+        padding: 0 0.5rem;
+      }
+      img {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .space-ship,
+    .ninja,
+    .rocket {
+      position: absolute;
+      width: 150px;
+      z-index: 100;
+    }
+  }
+  @media (min-width: 768px) {
+    .section {
+      height: 110vh;
+      .content {
+        h1 {
+          font-size: 2.2rem;
+          height: 3.5rem;
+        }
+        img {
+          width: 300px;
+        }
+      }
+      .space-ship,
+      .ninja,
+      .rocket {
+        width: 200px;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .section {
+      height: calc(130vh);
+      .content {
+        transform: translate(-50%, -90%);
+        h1 {
+          font-size: 4rem;
+          height: 4rem;
+          margin-bottom: 50px;
+        }
+        img {
+          width: 200px;
+        }
+      }
+      .space-ship,
+      .ninja,
+      .rocket {
+        width: 250px;
+      }
+    }
+  }
+  @media (min-width: 1600px) {
+    .section {
+      height: calc(130vh);
+      .content {
+        h1 {
+          font-size: 5rem;
+          height: 5rem;
+        }
+        img {
+          width: 300px;
+        }
+      }
+      .space-ship,
+      .ninja,
+      .rocket {
+        width: 300px;
+      }
+    }
+  }
+}

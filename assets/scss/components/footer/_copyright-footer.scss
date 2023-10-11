@@ -1,0 +1,31 @@
+.copyright-footer {
+  background-color: #24282a;
+  color: #fff;
+  padding: 1rem 9.5rem 1rem 7.5rem;
+  font-size: 14px;
+  text-align: center;
+  @media screen and (min-width: 992px) {
+    display: flex;
+    justify-content: space-between;
+    text-align: unset;
+  }
+  div:last-child {
+    @media screen and (max-width: 992px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: underline;
+    padding-bottom: 5px;
+    &:hover {
+      text-decoration: none;
+      color: #8ca2b3;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+}

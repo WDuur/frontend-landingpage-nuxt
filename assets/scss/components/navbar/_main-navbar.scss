@@ -1,0 +1,11 @@
+.navbar-container {
+  background-color: var(--shark);
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  margin: 0 auto;
+  height: 80px;
+  @media (min-width: 1024px) {
+    height: auto;
+  }
+}

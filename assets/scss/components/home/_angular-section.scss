@@ -1,0 +1,25 @@
+.angular {
+  .angular-logo {
+    filter: drop-shadow(3px 3px 8px #222);
+  }
+  .ninja {
+    animation: ninjaBounce 1.5s ease infinite;
+    filter: drop-shadow(5px 5px 5px #222);
+    transform: rotate(113deg);
+  }
+  @keyframes ninjaBounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0) scaleX(-1) rotate(40deg);
+    }
+    40% {
+      transform: translateY(-30px) scaleX(-1)rotate(35deg) ;
+    }
+    60% {
+      transform: translateY(-15px) scaleX(-1) rotate(35deg);
+    }
+  }
+}
