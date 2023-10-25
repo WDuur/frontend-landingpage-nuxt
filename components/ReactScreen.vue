@@ -3,12 +3,13 @@ import { onMounted, defineEmits } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
+import { useStack } from '../composables/useStack'
 
+const { setStack } = useStack();
 const emit = defineEmits();
+const reactHeader = ref(null);
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
-
-const reactHeader = ref(null);
 
 onMounted(() => {
   gsap.fromTo(
@@ -50,8 +51,9 @@ onMounted(() => {
     );
 });
 
-const handleClick = (eventName: string): void => {
-  emit("scroll", eventName);
+const handleClick = (): void => {
+  setStack('Ik ben een React-rocket')
+  emit("scroll");
 };
 </script>
 
@@ -63,7 +65,7 @@ const handleClick = (eventName: string): void => {
         src="@/assets/images/react-logo.png"
         alt="React Logo"
         class="react-logo"
-        @click="handleClick('react')"
+        @click="handleClick()"
       />
     </div>
     <img src="@/assets/images/rocket.png" alt="" class="rocket" />

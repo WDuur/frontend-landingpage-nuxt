@@ -3,6 +3,10 @@ import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
+import { useStack } from '../composables/useStack';
+
+const { setStack } = useStack();
+
 
 const emit = defineEmits();
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -77,8 +81,9 @@ const largeScreenAnimations = () => {
     },
   };
 };
-const handleClick = (eventName: string): void => {
-  emit("scroll", eventName);
+const handleClick = (): void => {
+  setStack('Ik ben een vue vechter')
+  emit("scroll");
 };
 </script>
 
@@ -91,7 +96,7 @@ const handleClick = (eventName: string): void => {
         src="@/assets/images/vue-logo.png"
         alt="Vue logo"
         class="vue-logo"
-        @click="handleClick('vue')"
+        @click="handleClick()"
       />
     </div>
   </div>

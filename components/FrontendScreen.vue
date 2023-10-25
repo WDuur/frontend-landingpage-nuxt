@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, defineProps } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-
+import CheckBoxGroup from './CheckBoxGroup.vue';
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const animateText = () => {
@@ -124,6 +124,7 @@ const handleCardClick = () => {
         </svg>
       </div>
     </div>
+    <CheckBoxGroup :stack="stack"/>
   </div>
 </template>
 
@@ -132,7 +133,7 @@ const handleCardClick = () => {
   &__swing {
     height: 500px;
     position: absolute;
-    left: 50%;
+    left: 60%;
     top: 210px;
     animation: card 1.5s ease 3;
     filter: drop-shadow(3px 3px 8px #222);
@@ -140,14 +141,25 @@ const handleCardClick = () => {
   &__card {
     height: 500px;
     position: absolute;
-    left: 50%;
-    top: 210px;
+    left: 60%;
+    top: 270px;
     animation: card 1.5s ease infinite;
+    @media (max-width: 1280px) {
+      top: 150px;
+    }
+    @media (max-width: 768px) {
+      left: 50%;
+      top: 75px;
+    }
+
     &-rope {
       fill: none;
       stroke: rgba(56, 54, 48, 0.9);
       stroke-width: 2;
       stroke-linecap: round;
+      @media (max-width: 768px) {
+        stroke-width: 1;
+      }
     }
     &-rect {
       cursor: pointer;

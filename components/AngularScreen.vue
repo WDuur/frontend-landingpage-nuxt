@@ -3,6 +3,9 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
+import { useStack } from '../composables/useStack'
+
+const { setStack } = useStack();
 
 const emit = defineEmits();
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
@@ -53,9 +56,9 @@ onMounted(() => {
       0
     );
 });
-const handleClick = (eventName: string): void => {
-  console.log(eventName);
-  emit("scroll", eventName);
+const handleClick = (): void => {
+  setStack('Ik hou van Angular actie')
+  emit("scroll");
 };
 </script>
 
@@ -67,7 +70,7 @@ const handleClick = (eventName: string): void => {
         src="@/assets/images/angular-logo.svg"
         alt="Angular Logo"
         class="angular-logo"
-        @click="handleClick('angular')"
+        @click="handleClick()"
       />
     </div>
     <img src="@/assets/images/ninja.png" alt="ninja" class="ninja" />
