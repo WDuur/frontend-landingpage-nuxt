@@ -24,7 +24,7 @@ gsap.registerPlugin(ScrollTrigger);
 const sections = ref<HTMLElement[]>([]);
 const mainContainer = ref<HTMLElement | null>(null);
 const customCursor = ref<HTMLElement | null>(null);
-const progressBackgroundColor = ref<String>('#197087')
+  const progressBackgroundColor = ref<string>('#197087');
 
 const callback: IntersectionObserverCallback = (entries) => {
   entries.forEach((entry) => {
