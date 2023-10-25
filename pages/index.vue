@@ -23,25 +23,4 @@ import Home from "@/components/Home.vue";
   width: 100%;
   height: 100%;
 }
-@keyframes grow-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-#progress {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 1em;
-  background: red;
-
-  transform-origin: 0 50%;
-  animation: grow-progress auto linear;
-  animation-timeline: scroll(block root);
-}
 </style>
