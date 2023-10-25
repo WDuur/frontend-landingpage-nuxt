@@ -3,7 +3,7 @@ import { onMounted, defineProps } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import CheckBoxGroup from './CheckBoxGroup.vue';
+import CheckBoxGroup from "./CheckBoxGroup.vue";
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const animateText = () => {
@@ -94,6 +94,7 @@ const handleCardClick = () => {
     <div class="sharevalue-content">
       <h2 id="sharevalue-content">SHARE<span>VALUE</span></h2>
       <h3 class="header-bottom">FRONTEND DEVELOPMENT</h3>
+
       <div class="swing">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +125,7 @@ const handleCardClick = () => {
         </svg>
       </div>
     </div>
-    <CheckBoxGroup :stack="stack"/>
+    <CheckBoxGroup />
   </div>
 </template>
 
@@ -136,6 +137,7 @@ const handleCardClick = () => {
     left: 60%;
     top: 210px;
     animation: card 1.5s ease 3;
+
     filter: drop-shadow(3px 3px 8px #222);
   }
   &__card {
@@ -150,6 +152,7 @@ const handleCardClick = () => {
     @media (max-width: 768px) {
       left: 50%;
       top: 75px;
+      z-index: 10;
     }
 
     &-rope {
