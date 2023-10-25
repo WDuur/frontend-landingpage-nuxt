@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 
+const emit = defineEmits();
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const animateText = () => {
@@ -52,6 +53,10 @@ onMounted(() => {
       0
     );
 });
+const handleClick = (eventName: string): void => {
+  console.log(eventName);
+  emit("scroll", eventName);
+};
 </script>
 
 <template>
@@ -62,6 +67,7 @@ onMounted(() => {
         src="@/assets/images/angular-logo.SVG"
         alt="Angular Logo"
         class="angular-logo"
+        @click="handleClick('angular')"
       />
     </div>
     <img src="@/assets/images/ninja.png" alt="ninja" class="ninja" />

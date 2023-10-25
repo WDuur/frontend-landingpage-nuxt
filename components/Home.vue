@@ -4,16 +4,12 @@ import ReactScreen from "@/components/ReactScreen.vue";
 import AngularScreen from "@/components/AngularScreen.vue";
 import VueScreen from "@/components/VueScreen.vue";
 import FrontendScreen from "@/components/FrontendScreen.vue";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const stack = ref("idle");
 const colors = ["#61dbfb", "#dd1b16", "#41b883", "#f0db4f"];
-// const colors = [
-//   "radial-gradient(circle, rgba(97,219,251,1) 60%, rgba(0,0,0,0.835171568627451) 100%)",
-//   "radial-gradient(circle, rgba(221,27,22,1) 60%, rgba(0,0,0,0.835171568627451) 100%)",
-//   "radial-gradient(circle, rgba(65,184,131,1) 60%, rgba(0,0,0,0.835171568627451) 100%)",
-//   "radial-gradient(circle, rgba(240,219,79,1) 60%, rgba(0,0,0,0.835171568627451) 100%)",
-// ];
 const reverseColors = ["#f0db4f", "#41b883", "#dd1b16", "#61dbfb"];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,13 +49,23 @@ onMounted(() => {
     });
   });
 });
+
+const handleScroll = (value: string): void => {
+  console.log(value);
+  stack.value = value;
+  const e = document.getElementById("sharevalue-content");
+  console.log(e);
+  if (e) {
+    e.scrollIntoView({ behavior: "smooth" });
+  }
+};
 </script>
 
 <template>
   <div class="main-container" ref="mainContainer">
-    <ReactScreen />
-    <AngularScreen />
-    <VueScreen />
+    <ReactScreen @scroll="handleScroll" />
+    <AngularScreen @scroll="handleScroll" />
+    <VueScreen @scroll="handleScroll" />
     <FrontendScreen />
   </div>
 </template>

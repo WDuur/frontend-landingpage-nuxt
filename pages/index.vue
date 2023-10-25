@@ -3,10 +3,10 @@ import Home from "@/components/Home.vue";
 </script>
 
 <template>
+  <div class="main__mask"></div>
   <main class="main">
     <Home />
   </main>
-  <div class="main__mask"></div>
 </template>
 
 <style scoped>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, defineEmits } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
+
+const emit = defineEmits();
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -47,6 +49,10 @@ onMounted(() => {
       0
     );
 });
+
+const handleClick = (eventName: string): void => {
+  emit("scroll", eventName);
+};
 </script>
 
 <template>
@@ -57,6 +63,7 @@ onMounted(() => {
         src="@/assets/images/react-logo.png"
         alt="React Logo"
         class="react-logo"
+        @click="handleClick('react')"
       />
     </div>
     <img src="@/assets/images/rocket.png" alt="" class="rocket" />

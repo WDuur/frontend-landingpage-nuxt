@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 
+const emit = defineEmits();
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const animateText = () => {
@@ -58,24 +59,27 @@ onMounted(() => {
 });
 
 // Define animations for small screen
-function smallScreenAnimations() {
+const smallScreenAnimations = () => {
   return {
     spaceShip: {
       from: { top: "90%", left: "46%", opacity: 1, scale: 1.5, width: "40vw" },
       to: { top: "-20vh", left: "47%", opacity: 1, scale: 0.1, width: "150px" },
     },
   };
-}
+};
 
 // Define animations for large screen
-function largeScreenAnimations() {
+const largeScreenAnimations = () => {
   return {
     spaceShip: {
       from: { top: "90%", left: "46%", opacity: 1, scale: 1.5, width: "20vw" },
       to: { top: "-20vh", left: "47%", opacity: 1, scale: 0.1, width: "150px" },
     },
   };
-}
+};
+const handleClick = (eventName: string): void => {
+  emit("scroll", eventName);
+};
 </script>
 
 <template>
@@ -83,7 +87,12 @@ function largeScreenAnimations() {
     <img src="@/assets/images/ship.png" alt="Space ship" class="space-ship" />
     <div class="content">
       <h1 class="vue-header"></h1>
-      <img src="@/assets/images/vue-logo.png" alt="Vue logo" class="vue-logo" />
+      <img
+        src="@/assets/images/vue-logo.png"
+        alt="Vue logo"
+        class="vue-logo"
+        @click="handleClick('vue')"
+      />
     </div>
   </div>
 </template>
