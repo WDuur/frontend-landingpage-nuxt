@@ -51,13 +51,7 @@ onMounted(() => {
         toggleActions: "restart none none reverse",
       },
     })
-    .fromTo(".frontend-content", { scale: 0.9 }, { scale: 1 })
-    .fromTo(
-      ".ninja",
-      { top: "0", left: "100px" },
-      { top: "-100px", left: "1000px" },
-      0
-    );
+    .fromTo(".frontend-content", { scale: 0.9 }, { scale: 1 });
 
   const tl = gsap.timeline({ onUpdate: updatePath, repeat: -1, yoyo: true });
 
