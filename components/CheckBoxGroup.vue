@@ -9,25 +9,14 @@ const { stack, stackCheck } = useStack();
 
 <template>
   <div class="checkbox-group">
-    <Checkbox id="stack" stroke="0" :label="stack" :selected="stackCheck" />
+    <Checkbox id="stack" :stroke="0" :label="stack" :selected="stackCheck" />
     <Checkbox
       id="typescript"
-      stroke="0.5"
+      :stroke="0.5"
       label="Ik weet alles van Typescript"
-      :selected="false"
     />
-    <Checkbox
-      id="dotnet"
-      stroke="0.2"
-      label="Ik heb ervaring met.NET"
-      :selected="false"
-    />
-    <Checkbox
-      id="team"
-      stroke="-0.4"
-      label="Ik ben een echte teamplayer"
-      :selected="false"
-    />
+    <Checkbox id="dotnet" :stroke="0.2" label="Ik heb ervaring met .NET" />
+    <Checkbox id="team" :stroke="-0.4" label="Ik ben een echte teamplayer" />
   </div>
 </template>
 
