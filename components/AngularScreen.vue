@@ -64,7 +64,7 @@ const handleClick = (eventName: string): void => {
     <div class="content">
       <h1 class="angular-header"></h1>
       <img
-        src="@/assets/images/angular-logo.SVG"
+        src="@/assets/images/angular-logo.svg"
         alt="Angular Logo"
         class="angular-logo"
         @click="handleClick('angular')"
