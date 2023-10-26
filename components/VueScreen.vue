@@ -82,7 +82,7 @@ const largeScreenAnimations = () => {
   };
 };
 const handleClick = (): void => {
-  setStack('Ik ben een vue vechter')
+  setStack('Ik ben een Vue vechter')
   emit("scroll");
 };
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Checkbox from "../components/atom/checkbox.vue";
+import Checkbox from "../components/atom/Checkbox.vue";
 import { useStack } from "../composables/useStack";
 
 //const selected = ref<boolean>(true);
