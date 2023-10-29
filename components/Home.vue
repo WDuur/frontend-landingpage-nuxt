@@ -8,25 +8,25 @@ import FrontendScreen from "@/components/FrontendScreen.vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const stack = ref<string>("idle");
-const colors: string[] = ['#61dbfb', '#dd1b16', '#41b883', '#f0db4f'];
-const progressolors: string[] = ['#197087', '#7F201E', '#237B54', '#9D8903'];
+const colors: string[] = ["#61dbfb", "#dd1b16", "#41b883", "#f0db4f"];
+const progressColors: string[] = ["#197087", "#7F201E", "#237B54", "#9D8903"];
 const reactScreen = ref<InstanceType<typeof ReactScreen> | null>(null);
 const angularScreen = ref<InstanceType<typeof AngularScreen> | null>(null);
 const vueScreen = ref<InstanceType<typeof VueScreen> | null>(null);
 const frontendScreen = ref<InstanceType<typeof VueScreen> | null>(null);
 const sections = ref<HTMLElement[]>([]);
 const mainContainer = ref<HTMLElement | null>(null);
-const progressBackgroundColor = ref<string>('#197087');
-
+const progressBackgroundColor = ref<string>("#197087");
 
 gsap.registerPlugin(ScrollTrigger);
 
-const callback: IntersectionObserverCallback = (entries) => {
-  
-  entries.forEach((entry) => {
+const callback: IntersectionObserverCallback = (
+  entries: IntersectionObserverEntry[]
+): void => {
+  entries.forEach((entry: IntersectionObserverEntry) => {
     if (entry.isIntersecting) {
-      progressBackgroundColor.value = progressolors[entry.target.id]
+      const targetId: number = parseInt(entry.target.id);
+      progressBackgroundColor.value = progressColors[targetId];
     }
   });
 };
@@ -34,7 +34,7 @@ const callback: IntersectionObserverCallback = (entries) => {
 onMounted(() => {
   const options: IntersectionObserverInit = {
     root: null, // Use the viewport as the root
-    rootMargin: '0px',
+    rootMargin: "0px",
     threshold: 0.6, // Trigger when 50% of the component is visible
   };
 
@@ -58,13 +58,11 @@ onMounted(() => {
     observerFrontend.observe(frontendScreen.value.$el);
   }
 
-
   sections.value = Array.from(
     document.querySelectorAll(".section")
   ) as HTMLElement[];
 
   sections.value.forEach((section, index) => {
-
     ScrollTrigger.create({
       trigger: section,
       start: "top 50%",
@@ -78,34 +76,23 @@ onMounted(() => {
     });
   });
 });
-
-const handleScroll = (value: string): void => {
-  stack.value = value;
-  console.log(value);
-  const e = document.getElementById("sharevalue-content");
-  if (e) {
-    e.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 </script>
 
 <template>
-  <div id="progress" :class="progressBackgroundColor" :style="{ backgroundColor: progressBackgroundColor }"></div>
+  <div
+    id="progress"
+    :class="progressBackgroundColor"
+    :style="{ backgroundColor: progressBackgroundColor }"
+  ></div>
   <div class="main-container" ref="mainContainer">
-    <ReactScreen 
-      id="0" 
-      item="react"
-      ref="reactScreen" 
-      @scroll="handleScroll" />
-    <AngularScreen id="1" ref="angularScreen" @scroll="handleScroll" />
-    <VueScreen id="2" ref="vueScreen" @scroll="handleScroll" />
+    <ReactScreen :id="0" item="react" ref="reactScreen" />
+    <AngularScreen :id="1" ref="angularScreen" />
+    <VueScreen :id="2" ref="vueScreen" />
     <FrontendScreen :id="3" ref="frontendScreen" />
   </div>
 </template>
 
 <style scoped>
-
 @keyframes grow-progress {
   from {
     transform: scaleX(0);

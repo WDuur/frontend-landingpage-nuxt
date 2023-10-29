@@ -1,6 +1,12 @@
 .angular {
   .angular-logo {
     filter: drop-shadow(3px 3px 8px #222);
+    &:hover {
+      position: relative;
+      top: -2px;
+      left: -2px;
+      filter: drop-shadow(7px 7px 7px #222);
+    }
   }
   .ninja {
     animation: ninjaBounce 1.5s ease infinite;

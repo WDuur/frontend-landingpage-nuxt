@@ -3,12 +3,11 @@ import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { useStack } from '../composables/useStack';
+import { useConfetti } from "../composables/useConfetti";
+import Confetti from "./atom/Confetti.vue";
 
-const { setStack } = useStack();
+const { setFire, stackToFire } = useConfetti();
 
-
-const emit = defineEmits();
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const animateText = () => {
@@ -81,9 +80,9 @@ const largeScreenAnimations = () => {
     },
   };
 };
-const handleClick = (): void => {
-  setStack('Ik ben een Vue vechter')
-  emit("scroll");
+
+const explode = async () => {
+  setFire("vue");
 };
 </script>
 
@@ -92,11 +91,17 @@ const handleClick = (): void => {
     <img src="@/assets/images/ship.png" alt="Space ship" class="space-ship" />
     <div class="content">
       <h1 class="vue-header"></h1>
+      <Confetti
+        v-if="stackToFire === 'vue'"
+        :power="0.9"
+        height="5000"
+        :colors="['#156e46', '#aaddc6']"
+      />
       <img
         src="@/assets/images/vue-logo.png"
         alt="Vue logo"
-        class="vue-logo"
-        @click="handleClick()"
+        class="vue-logo logo"
+        @click="explode()"
       />
     </div>
   </div>

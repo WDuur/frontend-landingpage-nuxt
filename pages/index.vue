@@ -16,7 +16,7 @@ import Home from "@/components/Home.vue";
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0) 30%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(0, 0, 0, 0.5) 100%
   );
   position: fixed;
   top: 0;

@@ -3,14 +3,10 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { useStack } from '../composables/useStack';
-import ConfettiExplosion from "vue-confetti-explosion";
+import { useConfetti } from "../composables/useConfetti";
+import Confetti from "./atom/Confetti.vue";
 
-const { setStack } = useStack();
-
-const emit = defineEmits();
-
-const explotion = ref(false);
+const { setFire, stackToFire } = useConfetti();
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -60,29 +56,25 @@ onMounted(() => {
       0
     );
 });
-const handleClick = (): void => {
-  setStack('Ik hou van Angular actie')
-  emit("scroll");
-};
 const explode = async () => {
-    explotion.value = false;
-    await nextTick();
-    explotion.value = true;
-    setTimeout(() => {
-      handleClick();
-    }, 2000);
-  };
+  setFire("angular");
+};
 </script>
 
 <template>
   <div class="angular section">
     <div class="content">
       <h1 class="angular-header"></h1>
-      <ConfettiExplosion class="confetti" v-if="explotion" :force="0.9" stageHeight="4000" :colors="['#942c29', '#e38886']"/>
+      <Confetti
+        v-if="stackToFire === 'angular'"
+        :power="0.5"
+        height="5000"
+        :colors="['#942c29', '#e38886']"
+      />
       <img
         src="@/assets/images/angular-logo.svg"
         alt="Angular Logo"
-        class="angular-logo"
+        class="angular-logo logo"
         @click="explode()"
       />
     </div>
@@ -94,6 +86,6 @@ const explode = async () => {
 .confetti {
   position: relative;
   top: 0vh;
-  left: 50vw;;
+  left: 50vw;
 }
 </style>

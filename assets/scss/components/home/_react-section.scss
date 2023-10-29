@@ -1,7 +1,15 @@
 .react {
   .react-logo {
     filter: drop-shadow(5px 5px 5px #222);
+    &:hover {
+      position: relative;
+      top: -2px;
+      left: -2px;
+      filter: drop-shadow(7px 7px 7px #222);
+    }
+
   }
+
   .rocket {
     animation: rocketShip 0.5s infinite;
     filter: drop-shadow(5px 5px 5px #222);

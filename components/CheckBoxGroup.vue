@@ -3,8 +3,7 @@ import { ref } from "vue";
 import Checkbox from "../components/atom/Checkbox.vue";
 import { useStack } from "../composables/useStack";
 
-//const selected = ref<boolean>(true);
-const { stack, stackCheck } = useStack();
+const { stack, stackCheck, typeCheck } = useStack();
 </script>
 
 <template>
@@ -13,6 +12,7 @@ const { stack, stackCheck } = useStack();
     <Checkbox
       id="typescript"
       :stroke="0.5"
+      :selected="typeCheck"
       label="Ik weet alles van Typescript"
     />
     <Checkbox id="dotnet" :stroke="0.2" label="Ik heb ervaring met .NET" />
