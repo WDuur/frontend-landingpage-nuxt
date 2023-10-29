@@ -3,11 +3,15 @@ import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { useStack } from '../composables/useStack'
+import { useStack } from '../composables/useStack';
+import ConfettiExplosion from "vue-confetti-explosion";
 
 const { setStack } = useStack();
 
 const emit = defineEmits();
+
+const explotion = ref(false);
+
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const animateText = () => {
@@ -60,19 +64,36 @@ const handleClick = (): void => {
   setStack('Ik hou van Angular actie')
   emit("scroll");
 };
+const explode = async () => {
+    explotion.value = false;
+    await nextTick();
+    explotion.value = true;
+    setTimeout(() => {
+      handleClick();
+    }, 2000);
+  };
 </script>
 
 <template>
   <div class="angular section">
     <div class="content">
       <h1 class="angular-header"></h1>
+      <ConfettiExplosion class="confetti" v-if="explotion" :force="0.9" stageHeight="4000" :colors="['#942c29', '#e38886']"/>
       <img
         src="@/assets/images/angular-logo.svg"
         alt="Angular Logo"
         class="angular-logo"
-        @click="handleClick()"
+        @click="explode()"
       />
     </div>
     <img src="@/assets/images/ninja.png" alt="ninja" class="ninja" />
   </div>
 </template>
+
+<style scoped>
+.confetti {
+  position: relative;
+  top: 0vh;
+  left: 50vw;;
+}
+</style>

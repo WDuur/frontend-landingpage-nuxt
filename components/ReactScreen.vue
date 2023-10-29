@@ -4,10 +4,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import { useStack } from '../composables/useStack'
+import ConfettiExplosion from "vue-confetti-explosion";
 
 const { setStack } = useStack();
 const emit = defineEmits();
 const reactHeader = ref(null);
+const explotion = ref(false);
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -55,17 +57,27 @@ const handleClick = (): void => {
   setStack('Ik ben een React-rocket')
   emit("scroll");
 };
+const explode = async () => {
+    explotion.value = false;
+    await nextTick();
+    explotion.value = true;
+    setTimeout(() => {
+      handleClick();
+    }, 2000);
+  };
+
 </script>
 
 <template>
   <div class="react section">
     <div class="content">
       <h1 ref="reactHeader" class="react-header"></h1>
+      <ConfettiExplosion class="confetti" v-if="explotion" :force="0.9" stageHeight="4000" :colors="['#2E3191', '#41BBC7']"/>
       <img
         src="@/assets/images/react-logo.png"
         alt="React Logo"
         class="react-logo"
-        @click="handleClick()"
+        @click="explode()"
       />
     </div>
     <img src="@/assets/images/rocket.png" alt="" class="rocket" />
@@ -73,5 +85,9 @@ const handleClick = (): void => {
 </template>
 
 <style scoped>
-/* Add your component-specific styles here */
+.confetti {
+  position: relative;
+  top: 0vh;
+  left: 50vw;;
+}
 </style>
