@@ -11,7 +11,6 @@ import Home from "@/components/Home.vue";
 </template>
 
 <style scoped>
-/* Add your component-specific styles here */
 .main__mask {
   background: radial-gradient(
     circle,
